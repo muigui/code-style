@@ -1,0 +1,46 @@
+name: release
+
+# Runs only on pushes to main. release-please maintains a "release PR"
+# (version bump + CHANGELOG). When that PR is merged, `release_created`
+# becomes true and the publish job runs — so npm publish only ever happens
+# on origin/main, never on branches or pull requests.
+on:
+  push:
+    branches: [main]
+
+# No permissions by default; each job opts in to exactly what it needs.
+permissions: {}
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write       # create the release tag + GitHub Release
+      pull-requests: write  # open/update the release PR
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  publish:
+    needs: release
+    # Only when a release was just cut, and only on main.
+    if: ${{ needs.release.outputs.release_created == 'true' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write       # enables npm Trusted Publishing via OIDC
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: '24'
+          registry-url: 'https://registry.npmjs.org'
+      - run: npm ci
+      # No NODE_AUTH_TOKEN: auth is via OIDC trusted publishing.
+      # Provenance is generated automatically (repo is public).
+      - run: npm publish
