@@ -1,0 +1,106 @@
+{
+  "name": "@muigui/code-style",
+  "author": "Christos Constandinou <christos@muigui.com> (https://github.com/constantology)",
+  "description": "muigui | Shared Code Lint and Style Configurations",
+  "license": "Apache-2.0",
+  "maintainers": [
+    {
+      "email": "christos@muigui.com",
+      "name": "Christos Constandinou",
+      "url": "https://github.com/constantology"
+    }
+  ],
+  "type": "module",
+  "version": "0.0.0",
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./javascript": {
+      "default": "./lib/javascript.js"
+    },
+    "./js": {
+      "default": "./lib/javascript.js"
+    },
+    "./ts": {
+      "default": "./lib/typescript.js"
+    },
+    "./tsconfig.eslint.json": {
+      "default": "./tsconfig.eslint.json"
+    },
+    "./tsconfig.json": {
+      "default": "./tsconfig.json"
+    },
+    "./typescript": {
+      "default": "./lib/typescript.js"
+    }
+  },
+  "scripts": {
+    "clean": "rm -rf node_modules",
+    "inspector": "npm exec -- eslint-config-inspector --config ./lib/index.js",
+    "prepare": "mkdir -p .husky && echo 'npm run lint:fix' > .husky/pre-commit",
+    "lint": "eslint --config eslint.config.js --report-unused-disable-directives ./lib",
+    "lint:fix": "lint-staged --verbose",
+    "lint:fix:all": "npm run lint -- --fix"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
+    "@eslint/compat": "^2.1.0",
+    "@eslint/config-inspector": "^3.0.4",
+    "@eslint/eslintrc": "^3.3.5",
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@types/node": "^24.12.4",
+    "@types/shelljs": "^0.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.60.0",
+    "@typescript-eslint/parser": "^8.60.0",
+    "conventional-changelog-cli": "^5.0.0",
+    "conventional-changelog-eslint": "^6.1.0",
+    "conventional-recommended-bump": "^11.2.0",
+    "eslint": "^10.4.0",
+    "eslint-plugin-check-file": "^3.3.1",
+    "eslint-plugin-perfectionist": "^5.9.0",
+    "globals": "^17.6.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.0.5",
+    "npm-check-updates": "^20.0.0",
+    "shelljs": "^0.10.0",
+    "typescript": "^6.0.3"
+  },
+  "peerDependencies": {
+    "@eslint/compat": "^2.1.0",
+    "@eslint/js": "^10.0.1",
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.60.0",
+    "@typescript-eslint/parser": "^8.60.0",
+    "eslint": "^10.4.0",
+    "eslint-plugin-check-file": "^3.3.1",
+    "eslint-plugin-perfectionist": "^5.9.0",
+    "globals": "^17.6.0"
+  },
+  "peerDependenciesMeta": {
+    "@typescript-eslint/eslint-plugin": {
+      "optional": true
+    },
+    "@typescript-eslint/parser": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": ">=24.13.1",
+    "npm": ">=11.8.0"
+  },
+  "packageManager": "npm@11.8.0",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/muigui/code-style.git"
+  },
+  "lint-staged": {
+    "./lib/**/*.{cjs,cjsx,cts,ctsx,js,jsx,mjs,mjsx,mts,mtsx,ts,tsx}": "eslint --config eslint.config.js --fix --report-unused-disable-directives"
+  }
+}
