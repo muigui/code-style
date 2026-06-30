@@ -79,14 +79,6 @@
     "eslint-plugin-perfectionist": "^5.9.0",
     "globals": "^17.6.0"
   },
-  "peerDependenciesMeta": {
-    "@typescript-eslint/eslint-plugin": {
-      "optional": true
-    },
-    "@typescript-eslint/parser": {
-      "optional": true
-    }
-  },
   "engines": {
     "node": ">=24.13.1",
     "npm": ">=11.8.0"
