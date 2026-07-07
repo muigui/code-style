@@ -107,7 +107,7 @@ This file is used for validating and building the actual files that are part of 
 
 ### What does this mean, exactly?
 
-It means that it should be used, and set up to ignore, files like `*.spec.mtsx` `*.test.t]s`, `./test/**/*.ts`, etc, etc…
+It means that it should be used, and set up to ignore, files like `*.spec.mtsx` `*.test.ts`, `./test/**/*.ts`, etc, etc…
 
 Here is an example of what a `tsconfig.json` file that is used by a project that will transpile from TypeScript (`./src/*`), to JavaScript (`./dist/*`), might look like: 
 
