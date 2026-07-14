@@ -13,11 +13,11 @@ This list may be updated by adding, removing/replacing and/or updating existing 
 
 ## Using Code Lint and Style
 
-### All (JavScript + TypeScript) defaults
+### All (JavaScript + TypeScript) defaults
 
 Create an `eslint.config.[cm]?[jt]sx?` file in your project root.
 
-Depending on the type of project, and how you are using it, you may want to just simply export the default JavaScript and TypeScript configurations. I.e.
+Depending on the type of project and how you are using it, you may want to just simply export the default JavaScript and TypeScript configurations. I.e.
 
 ```typescript
 export {
@@ -27,7 +27,7 @@ export {
 
 If you want to use one or the other, you could do this:
 
-#### JavScript defaults only
+#### JavaScript defaults only
 
 
 ```javascript
@@ -75,13 +75,13 @@ export default CODE_STYLE;
 
 ### Changing other configurations
 
-These work in the exact same way as changing the ignore files above. You simply:
+These work in the exact same way as changing the ignore files above. You simply need to:
 
 1. Create an `eslint.config.[cm]?[jt]sx?` file (extension depends on your project and preferences)
 2. Import the entire `CODE_STYLE` as the `default` configuration from `@muigui/code-style`
 3. Find each configuration you want to make changes to
    
-   The easiest way to do this, is by matching on each configuration's `name` property.
+   The easiest way to do this is by matching on each configuration's `name` property.
    
    You can easily find this by going through the files in the `lib` folder
 4. Add a check to ensure your configuration was found/does exist, or you can use chaining/nullish coalescing if you prefer
@@ -107,7 +107,7 @@ This file is used for validating and building the actual files that are part of 
 
 ### What does this mean, exactly?
 
-It means that it should be used, and set up to ignore, files like `*.spec.mtsx` `*.test.ts`, `./test/**/*.ts`, etc, etc…
+It means that it should be used, and set up to ignore, files like `*.spec.mtsx` `*.test.ts`, `./test/**/*.ts`, etc.
 
 Here is an example of what a `tsconfig.json` file that is used by a project that will transpile from TypeScript (`./src/*`), to JavaScript (`./dist/*`), might look like: 
 
