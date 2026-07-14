@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/muigui/code-style/compare/code-style-v1.0.2...code-style-v1.0.3) (2026-07-14)
+
+
+### Bug Fixes
+
+* typo and other grammatical issues ([#7](https://github.com/muigui/code-style/issues/7)) ([6e26b6b](https://github.com/muigui/code-style/commit/6e26b6b6022e6cc9092f5f13d920be91a93ced6f))
+
 ## [1.0.2](https://github.com/muigui/code-style/compare/code-style-v1.0.1...code-style-v1.0.2) (2026-07-07)
 
 
